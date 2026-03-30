@@ -188,7 +188,7 @@ const Page = () => {
   }
 
   const calculateCGPA = () => {
-    const valid = semesters.map(s => s.sgpa).filter(v => v !== '' && !isNaN(v as number))
+    const valid = semesters.map(s => s.sgpa).filter((v): v is number => v !== '' && !isNaN(v as number))
     if (valid.length === 0) { alert('Please enter at least one SGPA value'); return }
     const total = valid.reduce((s, v) => s + Number(v), 0)
     setCGPA(parseFloat((total / valid.length).toFixed(2)))
